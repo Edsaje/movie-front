@@ -16,6 +16,8 @@ export default {
       selectedGenre: '',
       searchTitle: '',
       sortBy: 'default',
+      alphabet: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split(''),
+      selectedLetter: '',
     }
   },
 
@@ -32,6 +34,9 @@ export default {
           page: page,
         }
 
+        if (this.selectedLetter) {
+          params.letter = this.selectedLetter
+        }
         if (this.searchTitle.trim()) {
           params.title = this.searchTitle.trim()
         }
@@ -57,6 +62,13 @@ export default {
     },
 
     onFilterChange() {
+      this.fetchMovies(1)
+      this.selectedLetter = ''
+    },
+
+    selectLetter(letter) {
+      this.selectedLetter = letter
+      this.searchTitle = ''
       this.fetchMovies(1)
     },
   },
@@ -143,8 +155,25 @@ export default {
     </div>
   </div>
   <div class="movies-view">
-    <h2>Rayon Cassettes</h2>
-    <h3 v-if="loading">Chargement de la bande en cours...</h3>
+    <div class="alphabet-bar">
+      <button
+        class="alphabet-btn"
+        :class="{ active: selectedLetter === '' }"
+        @click="selectLetter('')"
+      >
+        ★ TOUS ★
+      </button>
+      <button
+        v-for="letter in alphabet"
+        :key="letter"
+        class="alphabet-btn"
+        :class="{ active: selectedLetter === letter }"
+        @click="selectLetter(letter)"
+      >
+        {{ letter }}
+      </button>
+    </div>
+    <h3 v-if="loading" class="loading-message">📼 CHARGEMENT DE LA BANDE EN COURS...</h3>
     <p v-else-if="error" style="color: #ff007f">{{ error }}</p>
     <div v-else class="movies-grid">
       <MovieCard v-for="movie in sortedMovies" :key="movie.id" :movie="movie" />
@@ -173,8 +202,8 @@ export default {
   margin: 1.5rem 0 2rem;
   padding: 1rem;
   background-color: #12101a;
-  border: 2px solid #332652;
-  box-shadow: 4px 4px 0px #facc15;
+  border: 2px solid #facc15;
+  box-shadow: 4px 4px 0px #ff007f;
 }
 
 .filter-group {
@@ -186,25 +215,86 @@ export default {
   width: 100%;
   padding: 0.8rem 1rem;
   background-color: #05040a;
-  color: #facc15;
+  color: #00e5ff;
   border: 2px solid #332652;
   font-family: 'VT323', monospace;
   font-size: 1.3rem;
   letter-spacing: 1px;
   outline: none;
+  text-shadow: 0 0 4px rgba(0, 229, 255, 0.4);
   transition:
     border-color 0.2s,
     box-shadow 0.2s;
 }
 
+.vcr-filter-input::placeholder {
+  color: rgba(0, 229, 255, 0.5);
+  font-family: 'VT323', monospace;
+}
+
 .vcr-filter-input:focus,
 .vcr-filter-select:focus {
-  border-color: #00e5ff;
-  box-shadow: 0 0 10px rgba(0, 229, 255, 0.4);
+  border-color: #facc15;
+  box-shadow: 3px 3px 0px #ff007f;
 }
 
 .vcr-filter-select option {
   background-color: #12101a;
   color: #f8fafc;
+}
+
+.loading-message {
+  color: #00e5ff;
+  font-family: 'VT323', monospace;
+  font-size: 1.8rem;
+  text-shadow: 0 0 10px rgba(0, 229, 255, 0.8);
+  letter-spacing: 2px;
+  text-align: center;
+  margin: 3rem 0;
+}
+
+.alphabet-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4rem;
+  margin-bottom: 2rem;
+  padding: 0.8rem;
+  background-color: #12101a;
+  border: 2px solid #facc15;
+  box-shadow: 4px 4px 0px #ff007f;
+}
+
+.alphabet-btn {
+  background-color: #05040a;
+  color: #00e5ff;
+  text-shadow: 0 0 4px rgba(0, 229, 255, 0.5);
+  border: 2px solid #332652;
+  font-family: 'VT323', monospace;
+  font-size: 1.3rem;
+  padding: 0.3rem 0.6rem;
+  min-width: 2.4rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+/* Survol : s'illumine en rose avec ombre jaune */
+.alphabet-btn:hover {
+  background-color: #ff007f;
+  color: #ffffff;
+  border-color: #ff007f;
+  transform: translate(-1px, -1px);
+  box-shadow: 2px 2px 0px #facc15;
+}
+
+/* Touche active sélectionnée : fond jaune, ombre rose */
+.alphabet-btn.active {
+  background-color: #facc15;
+  color: #0b0914;
+  border-color: #facc15;
+  font-weight: bold;
+  transform: translate(-2px, -2px);
+  box-shadow: 3px 3px 0px #ff007f;
 }
 </style>

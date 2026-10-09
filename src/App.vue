@@ -29,11 +29,12 @@ export default {
       <router-view />
     </main>
 
-    <!-- Footer rétro discret -->
+    <!-- Footer rétro stylisé -->
     <footer class="vhs-footer">
       <p>
-        Vidéoclub Ouvert 7j/7 & 24h/24 • Retour des cassettes avant 19h • Merci de rembobiner vos
-        bandes
+        <span class="footer-highlight">★ RETROVIDÉO CLUB ★</span>
+        Ouvert 7j/7 & 24h/24 • Retour des cassettes avant 19h •
+        <span class="footer-neon">MERCI DE REMBOBINER VOS BANDES 📼</span>
       </p>
     </footer>
   </div>
@@ -73,9 +74,9 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 1rem 3rem;
-  background-color: #151026;
-  border-bottom: 4px solid #facc15;
-  box-shadow: 0 4px 20px rgba(250, 204, 21, 0.25);
+  background-color: #12101a;
+  border-bottom: 3px solid #facc15;
+  box-shadow: 0 3px 0px #ff007f;
 }
 
 .vhs-brand {
@@ -142,22 +143,25 @@ body {
   padding: 0.6rem 1.2rem;
   text-transform: uppercase;
   letter-spacing: 1px;
-  border: 2px solid #ffffff;
+  border: 2px solid #facc15;
   /* Ombre décalée rétro 90s */
-  box-shadow: 4px 4px 0px #ff007f;
+  box-shadow: 3px 3px 0px #ff007f;
   transition:
     transform 0.1s,
     box-shadow 0.1s;
 }
 
 .vhs-btn-card:hover {
+  background: #ff007f;
+  color: #ffffff !important;
+  border-color: #ff007f;
   transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0px #ff007f;
+  box-shadow: 4px 4px 0px #00e5ff;
 }
 
 .vhs-btn-card:active {
   transform: translate(2px, 2px);
-  box-shadow: 2px 2px 0px #ff007f;
+  box-shadow: 1px 1px 0px #00e5ff;
 }
 
 /* Contenu principal */
@@ -172,11 +176,28 @@ body {
 /* Footer rétro */
 .vhs-footer {
   text-align: center;
-  padding: 1.5rem;
-  background-color: #100b1d;
-  border-top: 2px dashed #332652;
-  color: #64748b;
+  padding: 1.5rem 2rem;
+  background-color: #12101a;
+  border-top: 3px solid #facc15;
+  box-shadow: 0 -3px 0px #ff007f;
+  color: #00e5ff;
   font-family: 'VT323', monospace;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
+  letter-spacing: 2px;
+  text-shadow: 0 0 5px rgba(0, 229, 255, 0.4);
+}
+
+.footer-highlight {
+  color: #facc15;
+  font-weight: bold;
+  text-shadow: 0 0 8px rgba(250, 204, 21, 0.6);
+  margin-right: 0.5rem;
+}
+
+.footer-neon {
+  color: #ff007f;
+  font-weight: bold;
+  text-shadow: 0 0 8px rgba(255, 0, 127, 0.6);
+  margin-left: 0.5rem;
 }
 </style>

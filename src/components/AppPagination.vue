@@ -80,7 +80,7 @@ export default {
 
     <!-- Sélecteur de page directe -->
     <div class="vcr-jump-box">
-      <span class="jump-label">SAUTER À :</span>
+      <span class="jump-label">ALLER À : </span>
       <input
         v-model.number="targetPage"
         @keyup.enter="jumpToPage"
@@ -119,7 +119,7 @@ export default {
   font-weight: bold;
   letter-spacing: 1px;
   cursor: pointer;
-  box-shadow: 3px 3px 0px #000;
+  box-shadow: 3px 3px 0px #ff007f;
   transition: all 0.1s;
 }
 
@@ -149,7 +149,7 @@ export default {
   align-items: center;
   gap: 0.6rem;
   background-color: #05040a;
-  border: 2px solid #00e5ff;
+  border: 2px solid #facc15;
   padding: 0.5rem 1.2rem;
   font-family: 'VT323', monospace;
   box-shadow: inset 0 0 8px rgba(0, 229, 255, 0.4);
@@ -169,52 +169,69 @@ export default {
 }
 
 .counter-total {
-  color: #facc15;
+  color: #00e5ff;
   font-size: 1.1rem;
 }
 
-vcr-jump-box {
+.vcr-jump-box {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  margin-left: 1rem;
-  padding-left: 1rem;
-  border-left: 2px dashed #332652;
+  gap: 0.6rem;
+  margin-left: 1.5rem;
+  padding: 0.4rem 0.8rem;
+  background-color: #05040a;
+  border: 2px solid #facc15;
+  box-shadow: 3px 3px 0px #ff007f;
 }
 
 .jump-label {
   font-family: 'VT323', monospace;
-  color: #facc15;
+  color: #00e5ff;
   font-size: 1.2rem;
+  letter-spacing: 1px;
+  text-shadow: 0 0 4px rgba(0, 229, 255, 0.5);
 }
 
 .vcr-jump-input {
-  width: 90px;
-  padding: 0.4rem 0.6rem;
-  background-color: #05040a;
+  width: 70px;
+  padding: 0.3rem 0.5rem;
+  background-color: #12101a;
   color: #00e5ff;
-  border: 2px solid #00e5ff;
+  border: 1px solid #332652;
   font-family: 'VT323', monospace;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   text-align: center;
   outline: none;
+  text-shadow: 0 0 6px #00e5ff;
+  transition: border-color 0.2s;
+}
+
+.vcr-jump-input:focus {
+  border-color: #00e5ff;
+}
+
+.vcr-jump-input::placeholder {
+  color: rgba(0, 229, 255, 0.4);
 }
 
 .vcr-jump-btn {
-  background-color: #ff007f;
-  color: #ffffff;
-  border: 2px solid #ffffff;
-  padding: 0.4rem 0.8rem;
+  background-color: #facc15;
+  color: #0b0914;
+  border: 1px solid #facc15;
+  padding: 0.3rem 0.7rem;
   font-family: 'VT323', monospace;
   font-size: 1.2rem;
   font-weight: bold;
   cursor: pointer;
-  box-shadow: 2px 2px 0px #000;
+  box-shadow: 2px 2px 0px #ff007f;
   transition: all 0.1s;
 }
 
 .vcr-jump-btn:hover {
+  background-color: #ff007f;
+  color: #ffffff;
+  border-color: #ff007f;
+  box-shadow: 2px 2px 0px #00e5ff;
   transform: translate(-1px, -1px);
-  box-shadow: 3px 3px 0px #facc15;
 }
 </style>
