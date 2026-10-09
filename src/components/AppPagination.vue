@@ -110,36 +110,42 @@ export default {
 
 /* Boutons de contrôle style touches de magnétoscope */
 .vcr-btn {
-  background-color: #1f1b2e;
-  color: #facc15;
-  border: 2px solid #facc15;
-  padding: 0.6rem 1rem;
+  background-color: #05040a;
+  color: #00e5ff;
+  text-shadow: 0 0 4px rgba(0, 229, 255, 0.5);
+  border: 2px solid #00e5ff;
+  padding: 0.5rem 1rem;
   font-family: 'VT323', monospace;
   font-size: 1.3rem;
   font-weight: bold;
   letter-spacing: 1px;
   cursor: pointer;
-  box-shadow: 3px 3px 0px #ff007f;
-  transition: all 0.1s;
+  transition: all 0.15s;
 }
 
 .vcr-btn:hover:not(:disabled) {
-  background-color: #facc15;
-  color: #0b0914;
+  background-color: #ff007f;
+  color: #ffffff;
+  border-color: #ff007f;
   transform: translate(-1px, -1px);
-  box-shadow: 4px 4px 0px #00e5ff;
+  box-shadow: 2px 2px 0px #facc15;
+  text-shadow: none;
 }
 
 .vcr-btn:active:not(:disabled) {
-  transform: translate(2px, 2px);
-  box-shadow: 1px 1px 0px #000;
+  background-color: #facc15;
+  color: #0b0914;
+  border-color: #facc15;
+  transform: translate(-2px, -2px);
+  box-shadow: 3px 3px 0px #ff007f;
 }
 
 .vcr-btn:disabled {
   opacity: 0.3;
   cursor: not-allowed;
-  border-color: #475569;
+  border-color: #332652;
   color: #64748b;
+  text-shadow: none;
   box-shadow: none;
 }
 
@@ -197,7 +203,7 @@ export default {
   padding: 0.3rem 0.5rem;
   background-color: #12101a;
   color: #00e5ff;
-  border: 1px solid #332652;
+  border: 2px solid #00e5ff;
   font-family: 'VT323', monospace;
   font-size: 1.3rem;
   text-align: center;
@@ -207,7 +213,7 @@ export default {
 }
 
 .vcr-jump-input:focus {
-  border-color: #00e5ff;
+  border-color: #facc15;
 }
 
 .vcr-jump-input::placeholder {
@@ -215,23 +221,32 @@ export default {
 }
 
 .vcr-jump-btn {
-  background-color: #facc15;
-  color: #0b0914;
-  border: 1px solid #facc15;
+  background-color: #05040a;
+  color: #00e5ff;
+  text-shadow: 0 0 4px rgba(0, 229, 255, 0.5);
+  border: 2px solid #00e5ff;
   padding: 0.3rem 0.7rem;
   font-family: 'VT323', monospace;
   font-size: 1.2rem;
   font-weight: bold;
   cursor: pointer;
-  box-shadow: 2px 2px 0px #ff007f;
-  transition: all 0.1s;
+  transition: all 0.15s;
 }
 
 .vcr-jump-btn:hover {
   background-color: #ff007f;
   color: #ffffff;
   border-color: #ff007f;
-  box-shadow: 2px 2px 0px #00e5ff;
   transform: translate(-1px, -1px);
+  box-shadow: 2px 2px 0px #facc15;
+  text-shadow: none;
+}
+
+.vcr-jump-btn:active {
+  background-color: #facc15;
+  color: #0b0914;
+  border-color: #facc15;
+  transform: translate(-2px, -2px);
+  box-shadow: 3px 3px 0px #ff007f;
 }
 </style>

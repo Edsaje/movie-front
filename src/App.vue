@@ -135,33 +135,34 @@ body {
 
 /* Bouton Carte Membre rétro */
 .vhs-btn-card {
-  background: #facc15;
-  color: #0b0914 !important;
+  background-color: #05040a;
+  color: #00e5ff !important;
   text-decoration: none;
-  font-weight: 900;
-  font-size: 1rem;
-  padding: 0.6rem 1.2rem;
+  font-family: 'VT323', monospace;
+  font-size: 1.3rem;
+  letter-spacing: 2px;
+  text-shadow: 0 0 4px rgba(0, 229, 255, 0.5);
+  border: 2px solid #00e5ff;
+  padding: 0.4rem 1.2rem;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  border: 2px solid #facc15;
-  /* Ombre décalée rétro 90s */
-  box-shadow: 3px 3px 0px #ff007f;
-  transition:
-    transform 0.1s,
-    box-shadow 0.1s;
+  transition: all 0.15s;
 }
 
 .vhs-btn-card:hover {
-  background: #ff007f;
+  background-color: #ff007f;
   color: #ffffff !important;
   border-color: #ff007f;
-  transform: translate(-2px, -2px);
-  box-shadow: 4px 4px 0px #00e5ff;
+  transform: translate(-1px, -1px);
+  box-shadow: 2px 2px 0px #facc15;
+  text-shadow: none;
 }
 
 .vhs-btn-card:active {
-  transform: translate(2px, 2px);
-  box-shadow: 1px 1px 0px #00e5ff;
+  background-color: #facc15;
+  color: #0b0914 !important;
+  border-color: #facc15;
+  transform: translate(-2px, -2px);
+  box-shadow: 3px 3px 0px #ff007f;
 }
 
 /* Contenu principal */

@@ -63,7 +63,6 @@ export default {
 
     onFilterChange() {
       this.fetchMovies(1)
-      this.selectedLetter = ''
     },
 
     selectLetter(letter) {
@@ -128,7 +127,7 @@ export default {
         v-model="searchTitle"
         @input="onFilterChange"
         type="text"
-        placeholder="RECHERCHER UNE CASSETTE (ex: Night Owls...)"
+        placeholder="RECHERCHER UNE VHS (ex: Night Owls, Legend of the Guardians...)"
         class="vcr-filter-input"
       />
 
@@ -216,7 +215,7 @@ export default {
   padding: 0.8rem 1rem;
   background-color: #05040a;
   color: #00e5ff;
-  border: 2px solid #332652;
+  border: 2px solid #00e5ff;
   font-family: 'VT323', monospace;
   font-size: 1.3rem;
   letter-spacing: 1px;
@@ -269,7 +268,7 @@ export default {
   background-color: #05040a;
   color: #00e5ff;
   text-shadow: 0 0 4px rgba(0, 229, 255, 0.5);
-  border: 2px solid #332652;
+  border: 2px solid #00e5ff;
   font-family: 'VT323', monospace;
   font-size: 1.3rem;
   padding: 0.3rem 0.6rem;
