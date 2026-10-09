@@ -2,6 +2,12 @@
 export default {
   name: 'AppPagination',
 
+  data() {
+    return {
+      targetPage: '',
+    }
+  },
+
   props: {
     currentPage: {
       type: Number,
@@ -27,6 +33,14 @@ export default {
     goToPage(page) {
       if (page >= 1 && page <= this.totalPages) {
         this.$emit('change-page', page)
+      }
+    },
+
+    jumpToPage() {
+      const page = Number(this.targetPage)
+      if (page >= 1 && page <= this.totalPages) {
+        this.goToPage(page)
+        this.targetPage = ''
       }
     },
   },
@@ -63,6 +77,21 @@ export default {
     <button class="vcr-btn" :disabled="currentPage >= totalPages" @click="goToPage(totalPages)">
       FIN ▶▶
     </button>
+
+    <!-- Sélecteur de page directe -->
+    <div class="vcr-jump-box">
+      <span class="jump-label">SAUTER À :</span>
+      <input
+        v-model.number="targetPage"
+        @keyup.enter="jumpToPage"
+        type="number"
+        :min="1"
+        :max="totalPages"
+        placeholder="N°"
+        class="vcr-jump-input"
+      />
+      <button class="vcr-jump-btn" @click="jumpToPage">GO ▶</button>
+    </div>
   </div>
 </template>
 
@@ -142,5 +171,50 @@ export default {
 .counter-total {
   color: #facc15;
   font-size: 1.1rem;
+}
+
+vcr-jump-box {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: 1rem;
+  padding-left: 1rem;
+  border-left: 2px dashed #332652;
+}
+
+.jump-label {
+  font-family: 'VT323', monospace;
+  color: #facc15;
+  font-size: 1.2rem;
+}
+
+.vcr-jump-input {
+  width: 90px;
+  padding: 0.4rem 0.6rem;
+  background-color: #05040a;
+  color: #00e5ff;
+  border: 2px solid #00e5ff;
+  font-family: 'VT323', monospace;
+  font-size: 1.4rem;
+  text-align: center;
+  outline: none;
+}
+
+.vcr-jump-btn {
+  background-color: #ff007f;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  padding: 0.4rem 0.8rem;
+  font-family: 'VT323', monospace;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 2px 2px 0px #000;
+  transition: all 0.1s;
+}
+
+.vcr-jump-btn:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0px #facc15;
 }
 </style>

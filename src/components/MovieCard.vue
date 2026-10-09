@@ -33,11 +33,20 @@ export default {
       <h3 class="tape-title">{{ movie.title }}</h3>
       <div class="tape-meta">
         <span class="tape-year">ANNEE: {{ movie.year }}</span>
-        <span class="tape-rating">⭐ {{ movie.imdb?.rating || '?' }}/10</span>
+        <span class="tape-rating">⭐ {{ movie.imdb?.rating || '?' }}/10 </span>
       </div>
       <div class="tape-footer">
-        <span>PAL • SECAM</span>
-        <span>HI-FI STEREO</span>
+        <span class="tape-genres">
+          {{
+            movie.genres
+              ?.map((g) => g.label)
+              .slice(0, 2)
+              .join(' • ') || 'TOUS PUBLICS'
+          }}
+        </span>
+        <span class="tape-votes">
+          {{ movie.imdb?.votes ? Number(movie.imdb.votes).toLocaleString() + ' AVIS' : '0 AVIS' }}
+        </span>
       </div>
     </div>
   </div>
