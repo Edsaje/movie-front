@@ -1,5 +1,6 @@
 <script>
 import api from '@/api'
+import AppPagination from '@/components/AppPagination.vue'
 import MovieCard from '@/components/MovieCard.vue'
 
 export default {
@@ -9,22 +10,21 @@ export default {
       movies: [],
       loading: false,
       error: null,
+      currentPage: 1,
+      totalItems: 0,
     }
   },
 
-  components: {
-    MovieCard,
-  },
-
   methods: {
-    async fetchMovies() {
+    async fetchMovies(page = 1) {
       this.loading = true
       this.error = null
 
       try {
-        const response = await api.get('/movies?itemsPerPage=12&page=1')
-        console.log('Données reçues : ', response.data)
+        const response = await api.get(`/movies?itemsPerPage=12&page=${page}`)
         this.movies = response.data.member
+        this.totalItems = response.data.totalItems
+        this.currentPage = page
       } catch (err) {
         this.error = 'Impossible de charger les films du vidéoclub'
         console.error(err)
@@ -32,6 +32,11 @@ export default {
         this.loading = false
       }
     },
+  },
+
+  components: {
+    MovieCard,
+    AppPagination,
   },
 
   mounted() {
@@ -48,6 +53,13 @@ export default {
     <div v-else class="movies-grid">
       <MovieCard v-for="movie in movies" :key="movie.id" :movie="movie" />
     </div>
+    <AppPagination
+      v-if="!loading && totalItems > 0"
+      :currentPage="currentPage"
+      :totalItems="totalItems"
+      :itemsPerPage="12"
+      @change-page="fetchMovies"
+    />
   </div>
 </template>
 
