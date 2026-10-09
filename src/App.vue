@@ -32,7 +32,7 @@ export default {
     <!-- Footer rétro discret -->
     <footer class="vhs-footer">
       <p>
-        📼 Vidéoclub Ouvert 7j/7 & 24h/24 • Retour des cassettes avant 19h • Merci de rembobiner vos
+        Vidéoclub Ouvert 7j/7 & 24h/24 • Retour des cassettes avant 19h • Merci de rembobiner vos
         bandes
       </p>
     </footer>
